@@ -10,11 +10,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get("/leaderboard", (req, res) => {
-    res.send(userData)
+    res.send(userData.filter(l => Try(()=>l.username)))
 });
 
 function isAllDigits(str) {
     return /^[0-9]+$/.test(str);
+}
+function Try (func) {
+    try {return func()}catch{return false;}
 }
 function removeSpaces(str) {
     return str.replace(/\s+/g, '');
@@ -26,10 +29,11 @@ app.get("/search", (req, res) => {
     if (!payload.query) return res.send({ error: "undefined param query" })
     let result = [], query = removeSpaces(payload.query).toLowerCase()
 
-    result.push(...userData.filter(l => removeSpaces(l.username).toLowerCase().includes(query)));
+    result.push(...userData.filter(l => Try(()=>removeSpaces(l.username).toLowerCase().includes(query))));
     if (isAllDigits(payload.query)) result.push(...userData.filter(l => l.id == Number(payload.query)))
-    res.send(result)
+    res.send(result);
 });
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
