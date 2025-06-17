@@ -40,7 +40,8 @@ function populateLeaderboard(data, append = true) {
 async function getData() {
     const res = await fetch('leaderboard'),
         data = await res.json();
-    allData = data.sort((a, b) => b.xp - a.xp);
+    window.D = data;
+    allData = data.sort((a, b) => b.score - a.score);
     const newData = allData.slice(0, itemsPerLoad);
     populateLeaderboard(newData, false);
     loadingDiv.style.display = 'none';
@@ -49,7 +50,7 @@ async function getData() {
 async function Search(query) {
     const res = await fetch("/search/?query=" + query),
         data = await res.json();
-    allData = data.sort((a, b) => b.xp - a.xp);
+    allData = data.sort((a, b) => b.score - a.score);
     const newData = allData.slice(0, itemsPerLoad);
     populateLeaderboard(newData, false);
     loadingDiv.style.display = 'none';
