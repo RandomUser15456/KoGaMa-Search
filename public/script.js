@@ -1,18 +1,10 @@
 let displayedCount = 0;
 const itemsPerLoad = 20;
 let isLoading = false;
-let allData = []; // Cache sorted data after first fetch
+let allData = [];
 
 
-/*
-document.querySelector('.hover-text').addEventListener('mousemove', (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    e.target.style.setProperty('--x', `${x}%`);
-    e.target.style.setProperty('--y', `${y}%`);
-});
-*/
+
 const loadingDiv = document.getElementById('loading');
 const mainSearch = document.querySelector("#main-search");
 
