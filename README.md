@@ -21,16 +21,6 @@
 
 ---
 
-## 📦 Ready-to-Use User Data
-
-For a large, pre-collected dataset of KoGaMa users (level > 12), download the folder below:
-
-🔗 **[Download Ready User Data (Mediafire)](https://www.mediafire.com/folder/ud6n7nfvhkj6w/KoGaMa_Search)**
-
-> This covers all players with level greater than 12 and includes the `www/` directory.
-
----
-
 ## 💡 Notes
 
 - Ensure you have ports open if accessing the UI from another device.
